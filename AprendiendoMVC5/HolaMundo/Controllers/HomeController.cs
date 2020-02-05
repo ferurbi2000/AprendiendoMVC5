@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HolaMundo.Models;
+using HolaMundo.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,10 @@ namespace HolaMundo.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var peliculaService = new PeliculasService();
+            var pelicula = peliculaService.ObtenerPelicula();
+                       
+            return View(pelicula);
         }
 
         public ActionResult About()
@@ -25,6 +30,13 @@ namespace HolaMundo.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Map()
+        {
+            ViewBag.Message = "Mi Mapa";
+
+            return View();            
         }
     }
 }
