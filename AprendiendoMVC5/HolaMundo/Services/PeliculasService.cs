@@ -18,5 +18,28 @@ namespace HolaMundo.Services
                 Publicacion = DateTime.Now
             };
         }
+
+        public List<Pelicula> ObtenerPeliculas()
+        {
+            var pelicula1 = new Pelicula()
+            {
+                Titulo = "Mi primer Libro1",
+                Duracion = 2,
+                Pais = "USA",
+                Publicacion = DateTime.Now
+            };
+
+            var pelicula2 = new Pelicula()
+            {
+                Titulo = "Mi primer Libro2",
+                Duracion = 29,
+                Pais = "UCRA",
+                Publicacion = DateTime.Now
+            };
+
+            return new List<Pelicula> {
+                pelicula1, pelicula2 
+            };
+        }
     }
 }
