@@ -13,9 +13,9 @@ namespace HolaMundo.Controllers
         public ActionResult Index()
         {
             var peliculaService = new PeliculasService();
-            var pelicula = peliculaService.ObtenerPelicula();
+            var model = peliculaService.ObtenerPelicula();
                        
-            return View(pelicula);
+            return View(model);
         }
 
         public ActionResult About()
