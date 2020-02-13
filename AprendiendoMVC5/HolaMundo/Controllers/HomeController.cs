@@ -24,6 +24,18 @@ namespace HolaMundo.Controllers
             return View(model);
         }
 
+        public HttpStatusCodeResult Error()
+        {
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound, "Hola");
+            //return View();
+        }
+
+        public FileResult Descargar()
+        {
+            var ruta = Server.MapPath("El lenguaje de programación C#.pdf");
+            return File(ruta, "application/pdf", "ApendiendoC#.pdf");
+        }
+
         public RedirectToRouteResult IrUrl()
         {
             //return Redirect("https://www.google.com");
@@ -44,7 +56,7 @@ namespace HolaMundo.Controllers
             var persona4 = new Persona { Name = "Heydi Lanzas", Age = 39 };
             var persona5 = new Persona { Name = "Maria Fernando", Age = 17 };
 
-            return Json(new List<Persona> { persona1, persona2, persona3, persona4, persona5}, JsonRequestBehavior.AllowGet);
+            return Json(new List<Persona> { persona1, persona2, persona3, persona4, persona5 }, JsonRequestBehavior.AllowGet);
         }
 
         public ContentResult Test()
@@ -60,9 +72,17 @@ namespace HolaMundo.Controllers
             return View();
         }
 
+
+        [HttpGet]
         public ActionResult Contact()
+        {            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(string nombre, int edad)
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your contact page." + nombre + edad.ToString();
 
             return View();
         }
