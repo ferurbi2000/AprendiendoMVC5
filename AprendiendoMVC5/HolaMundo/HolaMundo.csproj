@@ -241,6 +241,12 @@
     <Content Include="Views\Home\Map.cshtml" />
     <Content Include="Views\Home\UsoViewBag.cshtml" />
     <Content Include="Views\Home\Peliculas.cshtml" />
+    <Content Include="Views\Home\Info.cshtml" />
+    <Content Include="Views\Home\Display.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates\Pelicula.cshtml" />
+    <Content Include="Views\Home\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

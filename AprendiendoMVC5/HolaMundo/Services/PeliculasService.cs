@@ -30,9 +30,12 @@ namespace HolaMundo.Services
                 EstaEnCartelera = true
             };
 
+
+            //Peligroso pasar scripts en los registros
             var pelicula2 = new Pelicula()
             {
-                Titulo = "<b>Mi primer Libro2</b><script>alert('hackeado')</script>",
+                //Titulo = "<b>Mi primer Libro2</b><script>alert('hackeado')</script>",
+                Titulo = "<b>Mi primer Libro2</b>",
                 Duracion = 29,
                 Pais = "UCRA",
                 Publicacion = DateTime.Now,

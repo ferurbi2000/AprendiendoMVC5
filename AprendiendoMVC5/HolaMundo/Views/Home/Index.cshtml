@@ -12,10 +12,21 @@
     </div>*@
 
 @Html.ActionLink("Ver Peliculas", "Peliculas")
+<br />
 @Html.ActionLink("Ver Peliculas", "Peliculas", null, new { miAtributo = "valor1", @class = "btn btn-default" })
-@Html.ActionLink("Ver Peliculas", "Peliculas", new { titulo = "Listado de Peliculas" } , new { miAtributo = "valor1", @class = "btn btn-default" })
+<br />
+@Html.ActionLink("Ver Peliculas", "Peliculas", new { titulo = "Listado de Peliculas" }, new { miAtributo = "valor1", @class = "btn btn-default" })
+<br />
+@Html.ActionLink("Usemos el Helper Display", "Display")
+<br />
+<br />
 
+<p>Usando render Action pasando la vista de Contactos</p>
 
+@{
+    //Le podemos pasar valores a nuestra vista secundaria por medio de routeValue
+    Html.RenderAction("Info", new { nombres = "Fernando Jose Urbina Melendez" });
+}
 
 @*<div class="row">
         <div class="col-md-4">

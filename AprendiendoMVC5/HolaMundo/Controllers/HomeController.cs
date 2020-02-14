@@ -81,6 +81,21 @@ namespace HolaMundo.Controllers
             //return View();
         }
 
+        [ChildActionOnly] //Este atributo define que esta accion solamente se va ejecutar dentro de una vista
+        public ActionResult Info(string nombres)
+        {
+            ViewBag.nombre = nombres;
+            return View();
+        }
+
+        public ActionResult Display()
+        {
+            var pelicula = new Pelicula { Titulo = "Nuevo Libro", Duracion = 32, Pais = "Nicaragua", EstaEnCartelera = true, Publicacion =  DateTime.Now};
+            ViewBag.Pelicula = pelicula;
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
