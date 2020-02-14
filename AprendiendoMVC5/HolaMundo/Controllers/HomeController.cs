@@ -43,6 +43,14 @@ namespace HolaMundo.Controllers
 
         }
 
+        public ActionResult UsoViewBag()
+        {
+            ViewBag.miMensaje = "Nuevo Mensaje usando ViewBag";
+            ViewData["Mensaje"] = "Mensaje con ViewData";
+            ViewData["Fecha"] = DateTime.Now.ToString();
+            return View();
+        }
+
         public ActionResult IrOtro()
         {
             return RedirectToRoute("Test");
@@ -59,6 +67,14 @@ namespace HolaMundo.Controllers
             return Json(new List<Persona> { persona1, persona2, persona3, persona4, persona5 }, JsonRequestBehavior.AllowGet);
         }
 
+        public  ActionResult Peliculas(string titulo)
+        {
+            ViewBag.Titulo = titulo;
+            var peliculasService = new PeliculasService();
+            var peliculas = peliculasService.ObtenerPeliculas();
+
+            return View(peliculas);
+        }
         public ContentResult Test()
         {
             return Content("<b>Fernando</b><h1>TEST</h1>");
@@ -68,6 +84,7 @@ namespace HolaMundo.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
 
             return View();
         }

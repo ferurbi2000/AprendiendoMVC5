@@ -26,19 +26,30 @@ namespace HolaMundo.Services
                 Titulo = "Mi primer Libro1",
                 Duracion = 2,
                 Pais = "USA",
-                Publicacion = DateTime.Now
+                Publicacion = DateTime.Now,
+                EstaEnCartelera = true
             };
 
             var pelicula2 = new Pelicula()
             {
+                Titulo = "<b>Mi primer Libro2</b><script>alert('hackeado')</script>",
+                Duracion = 29,
+                Pais = "UCRA",
+                Publicacion = DateTime.Now,
+                EstaEnCartelera=true
+            };
+            
+            var pelicula3 = new Pelicula()
+            {
                 Titulo = "Mi primer Libro2",
                 Duracion = 29,
                 Pais = "UCRA",
-                Publicacion = DateTime.Now
+                Publicacion = DateTime.Now,
+                EstaEnCartelera=false
             };
 
             return new List<Pelicula> {
-                pelicula1, pelicula2 
+                pelicula1, pelicula2, pelicula3 
             };
         }
     }
