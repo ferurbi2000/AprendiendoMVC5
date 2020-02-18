@@ -11,7 +11,7 @@ namespace HolaMundo.Models
         Aprobado = 1,
         Rechazado = 2,
         Pendiente = 3,        
-        [Description("Pendiente Aprobacion")]
-        PendienteAprobacion = 4
+        [Description("Pendiente Aprobacion 1")]
+        PendienteAprobacion = 5
     }
 }
