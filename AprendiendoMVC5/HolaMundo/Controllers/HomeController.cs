@@ -3,6 +3,7 @@ using HolaMundo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -67,7 +68,7 @@ namespace HolaMundo.Controllers
             return Json(new List<Persona> { persona1, persona2, persona3, persona4, persona5 }, JsonRequestBehavior.AllowGet);
         }
 
-        public  ActionResult Peliculas(string titulo)
+        public ActionResult Peliculas(string titulo)
         {
             ViewBag.Titulo = titulo;
             var peliculasService = new PeliculasService();
@@ -90,9 +91,68 @@ namespace HolaMundo.Controllers
 
         public ActionResult Display()
         {
-            var pelicula = new Pelicula { Titulo = "Nuevo Libro", Duracion = 32, Pais = "Nicaragua", EstaEnCartelera = true, Publicacion =  DateTime.Now};
+            var pelicula = new Pelicula { Titulo = "Nuevo Libro", Duracion = 32, Pais = "Nicaragua", EstaEnCartelera = true, Publicacion = DateTime.Now };
             ViewBag.Pelicula = pelicula;
 
+            return View();
+        }
+
+
+        //Funcion que permite usar reflexion para recorrer genericos tipo SelectListItem
+        //Permite utilizar el atributo descripcion de una lista Enum y utilizarlo como la descripcion del elemento
+        private List<SelectListItem> ToListSelectItem<T>()
+        {
+            var t = typeof(T);
+
+            if (!t.IsEnum) { throw new ApplicationException("Tipo debe ser enum"); }
+
+            var members = t.GetFields(BindingFlags.Public | BindingFlags.Static);
+
+            var result = new List<SelectListItem>();
+
+            foreach (var member in members)
+            {
+                var attributeDescription = member.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
+                var descripcion = member.Name;
+
+                if (attributeDescription.Any())
+                {
+                    descripcion = ((System.ComponentModel.DescriptionAttribute)attributeDescription[0]).Description;
+                }
+
+                var valor = ((int)Enum.Parse(t, member.Name));
+                result.Add(new SelectListItem()
+                {
+                    Text = descripcion,
+                    Value =valor.ToString()
+                });
+            }
+            return result;
+        }
+
+        public ActionResult DropDownList()
+        {
+            var listado = new List<SelectListItem>() {
+                new SelectListItem()
+                {
+                    Text="Si",
+                    Value="1"
+                },
+                new SelectListItem()
+                {
+                    Text="No",
+                    Value="2",
+                    Disabled=true
+                },
+                new SelectListItem()
+                {
+                    Text="Quizas",
+                    Value="3"
+                }
+            };
+
+            ViewBag.miListado = listado;
+            ViewBag.miListadoEnum = ToListSelectItem<ResultadoOperacion>();
             return View();
         }
 
@@ -107,7 +167,7 @@ namespace HolaMundo.Controllers
 
         [HttpGet]
         public ActionResult Contact()
-        {            
+        {
             return View();
         }
 

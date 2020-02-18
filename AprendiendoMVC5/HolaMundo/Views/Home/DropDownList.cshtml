@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "DropDownList";
+}
+
+<h2>DropDownList</h2>
+
+
+
+<br />
+<label>Escoja una opcion:</label>
+@Html.DropDownList("miDropDownList", (List<SelectListItem>)ViewBag.miListado)
+
+
+<br />
+<label>Escoja una opcion usando Enum:</label>
+@Html.DropDownList("miDropDownList2", (List<SelectListItem>)ViewBag.miListadoEnum)
+
