@@ -1,5 +1,6 @@
 ﻿using HolaMundo.Models;
 using HolaMundo.Services;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -154,6 +155,19 @@ namespace HolaMundo.Controllers
             ViewBag.miListado = listado;
             ViewBag.miListadoEnum = ToListSelectItem<ResultadoOperacion>();
             return View();
+        }
+
+        
+        public ActionResult Formulario()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Formulario(Pelicula pelicula)
+        {
+            ViewBag.Mensaje = "Exitoso";
+            return View(pelicula);
         }
 
         public ActionResult About()

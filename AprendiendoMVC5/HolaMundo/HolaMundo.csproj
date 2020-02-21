@@ -249,6 +249,7 @@
     <Content Include="Views\Home\DisplayTemplates\Pelicula.cshtml" />
     <Content Include="Views\Home\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Home\DropDownList.cshtml" />
+    <Content Include="Views\Home\Formulario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

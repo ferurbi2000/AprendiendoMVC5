@@ -1,0 +1,21 @@
+﻿@model HolaMundo.Models.Pelicula
+@{
+    ViewBag.Title = "FormularioRazor";
+}
+
+<h2>FormularioRazor</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(Model => Model.Titulo)
+        @Html.EditorFor(Model=>Model.Titulo)
+    </div>
+    <div>
+        @Html.LabelFor(Model => Model.Publicacion)
+        @Html.EditorFor(Model => Model.Publicacion)
+    </div>
+
+    <input type="submit" value="Enviar" />
+}
+
