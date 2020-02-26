@@ -5,16 +5,24 @@
 
 <h2>FormularioRazor</h2>
 
+<h3>@ViewBag.Mensaje</h3>
+
 @using (Html.BeginForm())
 {
-    <div>
+    //Tenemos dos opciones
+
+    //Uno: es usar uno a uno los editores
+    @*<div>
         @Html.LabelFor(Model => Model.Titulo)
         @Html.EditorFor(Model=>Model.Titulo)
     </div>
     <div>
         @Html.LabelFor(Model => Model.Publicacion)
         @Html.EditorFor(Model => Model.Publicacion)
-    </div>
+    </div>*@
+
+    //Dos: es usar el editorformodel para que nos abastraiga nuestros editores
+    @Html.EditorForModel();
 
     <input type="submit" value="Enviar" />
 }

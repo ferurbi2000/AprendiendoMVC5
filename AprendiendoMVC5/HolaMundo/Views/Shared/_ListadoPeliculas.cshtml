@@ -1,0 +1,30 @@
+﻿@model List<HolaMundo.Models.Pelicula>
+<h3>Esta es la vista principal</h3>
+
+<h4>Mostrando @Model.Count Peliculas</h4>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Duracion</th>
+            <th>Pais</th>
+            <th>Publicacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pelicula in Model)
+        {
+
+            var strClass = !pelicula.EstaEnCartelera ? "danger" : string.Empty;
+
+            <tr class="@strClass">
+                <td>@Html.Raw(pelicula.Titulo)</td>
+                <td>@pelicula.Duracion</td>
+                <td>@pelicula.Pais</td>
+                <td>@pelicula.Publicacion</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

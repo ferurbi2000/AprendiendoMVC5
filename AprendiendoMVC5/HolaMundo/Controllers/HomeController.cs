@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace HolaMundo.Controllers
 {
 
-    public class Persona
+    public class Persona2
     {
         public string Name { get; set; }
         public int Age { get; set; }
@@ -60,13 +60,13 @@ namespace HolaMundo.Controllers
 
         public ActionResult Personas()
         {
-            var persona1 = new Persona { Name = "Fernando Urbina", Age = 42 };
-            var persona2 = new Persona { Name = "Heydi Lanzas", Age = 39 };
-            var persona3 = new Persona { Name = "Fernando Urbina", Age = 42 };
-            var persona4 = new Persona { Name = "Heydi Lanzas", Age = 39 };
-            var persona5 = new Persona { Name = "Maria Fernando", Age = 17 };
+            var persona1 = new Persona2 { Name = "Fernando Urbina", Age = 42 };
+            var persona2 = new Persona2 { Name = "Heydi Lanzas", Age = 39 };
+            var persona3 = new Persona2 { Name = "Fernando Urbina", Age = 42 };
+            var persona4 = new Persona2 { Name = "Heydi Lanzas", Age = 39 };
+            var persona5 = new Persona2 { Name = "Maria Fernando", Age = 17 };
 
-            return Json(new List<Persona> { persona1, persona2, persona3, persona4, persona5 }, JsonRequestBehavior.AllowGet);
+            return Json(new List<Persona2> { persona1, persona2, persona3, persona4, persona5 }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Peliculas(string titulo)
@@ -166,8 +166,17 @@ namespace HolaMundo.Controllers
         [HttpPost]
         public ActionResult Formulario(Pelicula pelicula)
         {
-            ViewBag.Mensaje = "Exitoso";
+            ViewBag.Mensaje = "Exitoso: " + pelicula.Titulo;
             return View(pelicula);
+        }
+
+        public ActionResult UsandoVistasParciales()
+        {
+            var service = new PeliculasService();
+            var peliculas = service.ObtenerPeliculas();
+
+            ViewBag.MiListado = peliculas;
+            return View();
         }
 
         public ActionResult About()
